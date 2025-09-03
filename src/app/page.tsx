@@ -6,7 +6,7 @@ interface HomeProps {
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  const params = await searchParams; 
+  const params = await searchParams ; 
   const page = Number(params.page) || 1;
   const data = await getPokemonList(page);
 
