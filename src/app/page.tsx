@@ -13,6 +13,11 @@ interface HomeProps {
   searchParams: Promise<{ page?: string; q?: string }>;
 }
 
+// Type guard para identificar PokemonDetails
+function isPokemonDetails(pokemon: PokemonListResult | PokemonDetails): pokemon is PokemonDetails {
+  return "id" in pokemon;
+}
+
 export default async function Home({ searchParams }: HomeProps) {
   const params = await searchParams;
   const q = (params?.q ?? "").trim();
@@ -42,7 +47,7 @@ export default async function Home({ searchParams }: HomeProps) {
         {results.length > 0 ? (
           results.map((pokemon) => (
             <PokemonCard
-              key={"id" in pokemon ? String((pokemon as any).id) : pokemon.name}
+              key={isPokemonDetails(pokemon) ? String(pokemon.id) : pokemon.name}
               pokemon={pokemon}
             />
           ))
@@ -73,9 +78,8 @@ export default async function Home({ searchParams }: HomeProps) {
         </div>
       )}
 
-       {/* Mensagem de rodapé */}
-    <FooterMessage />
-    
+      {/* Mensagem de rodapé */}
+      <FooterMessage />
     </div>
   );
 }
