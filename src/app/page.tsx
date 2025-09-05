@@ -36,8 +36,8 @@ export default async function Home({ searchParams }: HomeProps) {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-3xl font-bold">Pokédex</h1>
+    <div className="flex flex-col gap-6 min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white px-4 py-6">
+      <h1 className="text-3xl font-bold text-center">Pokédex</h1>
 
       {/* Campo de busca */}
       <SearchBar />
@@ -52,7 +52,7 @@ export default async function Home({ searchParams }: HomeProps) {
             />
           ))
         ) : (
-          <p>Nenhum Pokémon encontrado.</p>
+          <p className="text-center col-span-full">Nenhum Pokémon encontrado.</p>
         )}
       </div>
 
@@ -62,7 +62,7 @@ export default async function Home({ searchParams }: HomeProps) {
           {page > 1 && (
             <a
               href={`/?page=${page - 1}`}
-              className="px-3 py-2 bg-gray-200 rounded hover:bg-gray-300"
+              className="px-3 py-2 bg-gray-200 rounded hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white"
             >
               ◀ Anterior
             </a>
@@ -70,7 +70,7 @@ export default async function Home({ searchParams }: HomeProps) {
           {next && (
             <a
               href={`/?page=${page + 1}`}
-              className="px-3 py-2 bg-gray-200 rounded hover:bg-gray-300"
+              className="px-3 py-2 bg-gray-200 rounded hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white"
             >
               Próximo ▶
             </a>
