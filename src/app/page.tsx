@@ -1,5 +1,6 @@
 import PokemonCard from "@/components/PokemonCard";
 import SearchBar from "@/components/SearchBar";
+import FooterMessage from "@/components/FooterMessage";
 import {
   getPokemonList,
   PokemonListResponse,
@@ -71,6 +72,10 @@ export default async function Home({ searchParams }: HomeProps) {
           )}
         </div>
       )}
+
+       {/* Mensagem de rodapé */}
+    <FooterMessage />
+    
     </div>
   );
 }
